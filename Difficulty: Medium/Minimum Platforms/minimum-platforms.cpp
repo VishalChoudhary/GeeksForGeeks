@@ -4,21 +4,21 @@ class Solution {
     // railway station such that no train waits.
     int findPlatform(vector<int>& arr, vector<int>& dep) {
         // Your code here
+        int n = arr.size();
         sort(arr.begin(),arr.end());
         sort(dep.begin(),dep.end());
+        int cnt=0,maxCnt=INT_MIN;
         int i=0,j=0;
-        int cnt=0,max_cnt=INT_MIN;
-        while(i<arr.size()){
+        while(i<n){
             if(arr[i]<=dep[j]){
-                cnt+=1;
+                cnt++;
                 i++;
-            }
-            else {
-                cnt-=1;
+            }else{
+                cnt--;
                 j++;
             }
-            max_cnt=max(cnt,max_cnt);
+            maxCnt=max(cnt,maxCnt);
         }
-        return max_cnt;
+        return maxCnt;
     }
 };
